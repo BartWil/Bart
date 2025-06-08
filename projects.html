@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Projects - Bart Wilczynski">
+
+    <title>Projects - Bart Wilczynski</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Custom Fonts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-grey: #4a5568;
+            --secondary-grey: #718096;
+            --light-grey: #a0aec0;
+            --bg-grey: #f7fafc;
+            --border-grey: #e2e8f0;
+            --text-dark: #2d3748;
+            --text-medium: #4a5568;
+            --text-light: #718096;
+            --accent-blue: #3182ce;
+            --success-green: #38a169;
+            --warning-orange: #dd6b20;
+        }
+
+        .container-custom {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 30px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-grey);
+        }
+
+        .project-grid {
+            display: grid;
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .project-card {
+            background: white;
+            border: 1px solid var(--border-grey);
+            border-radius: 8px;
+            padding: 25px;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .project-status {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.75em;
+            font-weight: 500;
+            padding: 4px 10px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-active {
+            background: rgba(56, 161, 105, 0.1);
+            color: var(--success-green);
+            border: 1px solid rgba(56, 161, 105, 0.2);
+        }
+
+        .status-recruiting {
+            background: rgba(49, 130, 206, 0.1);
+            color: var(--accent-blue);
+            border: 1px solid rgba(49, 130, 206, 0.2);
+        }
+
+        .status-completed {
+            background: rgba(221, 107, 32, 0.1);
+            color: var(--warning-orange);
+            border: 1px solid rgba(221, 107, 32, 0.2);
+        }
+
+        .project-title {
+            font-size: 1.25em;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .project-period {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8em;
+            color: var(--text-medium);
+            margin-bottom: 8px;
+        }
+
+        .project-nct {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75em;
+            background: var(--bg-grey);
+            color: var(--text-medium);
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-grey);
+        }
+
+        .project-description {
+            color: var(--text-medium);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+
+        .project-objectives {
+            background: var(--bg-grey);
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border-left: 3px solid var(--light-grey);
+        }
+
+        .project-objectives h5 {
+            font-size: 0.9em;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .project-objectives ul {
+            margin: 0;
+            padding-left: 16px;
+            font-size: 0.85em;
+            color: var(--text-medium);
+        }
+
+        .project-objectives li {
+            margin-bottom: 4px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            font-size: 0.7em;
+            padding: 3px 8px;
+            background: var(--bg-grey);
+            color: var(--text-medium);
+            border-radius: 10px;
+            font-weight: 500;
+            border: 1px solid var(--border-grey);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .project-links a {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 14px;
+            text-decoration: none;
+            font-size: 0.8em;
+            font-weight: 500;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary-minimal {
+            background: var(--text-dark);
+            color: white;
+            border: 1px solid var(--text-dark);
+        }
+
+        .btn-primary-minimal:hover {
+            background: var(--text-medium);
+            color: white;
+            text-decoration: none;
+        }
+
+        .btn-secondary-minimal {
+            background: transparent;
+            color: var(--text-medium);
+            border: 1px solid var(--border-grey);
+        }
+
+        .btn-secondary-minimal:hover {
+            background: var(--bg-grey);
+            color: var(--text-dark);
+            text-decoration: none;
+        }
+
+        .stats-summary {
+            background: white;
+            border: 1px solid var(--border-grey);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-summary h4 {
+            font-size: 1.1em;
+            margin: 0 0 15px 0;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item .number {
+            font-size: 1.8em;
+            font-weight: 300;
+            color: var(--text-dark);
+            display: block;
+        }
+
+        .stat-item .label {
+            font-size: 0.8em;
+            color: var(--text-medium);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .funding-info {
+            background: var(--bg-grey);
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-grey);
+        }
+
+        .funding-info .label {
+            font-size: 0.75em;
+            font-weight: 600;
+            color: var(--text-medium);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        .funding-info .value {
+            font-size: 0.85em;
+            color: var(--text-dark);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .open-source-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 40px;
+            border: 1px solid var(--border-grey);
+        }
+
+        .open-source-section h3 {
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .stats-row {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .project-links {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .project-links a {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Bart Wilczynski</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="about.html">About</a>
+                    </li>
+                    <li>
+                        <a href="publications.html">Publications</a>
+                    </li>
+                    <li>
+                        <a href="projects.html">Projects</a>
+                    </li>
+                    <li>
+                        <a href="speaking.html">Speaking</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <header class="intro-header" style="background-image: url('img/projects.jpg');">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="page-heading">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <h1>Projects</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                <!-- Stats Overview -->
+                <div class="stats-summary">
+                    <h4>Research Portfolio Overview</h4>
+                    <div class="stats-row">
+                        <div class="stat-item">
+                            <span class="number">4</span>
+                            <span class="label">Clinical Trials</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="number">3</span>
+                            <span class="label">Active Studies</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="number">1</span>
+                            <span class="label">Funded Project</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Current Clinical Trials -->
+                <h2 class="section-title">Current Clinical Trials</h2>
+
+                <div class="project-grid">
+                    <div class="project-card">
+                        <h3 class="project-title">Incidence and Relationships of Musculoskeletal Injuries, Sports Performance, Sports Specialization, and Quality of Life in Young Athletes</h3>
+                        <p class="project-period">March 2024 - May 2025</p>
+                        <div class="project-nct">NCT06325228</div>
+                        
+                        <div class="funding-info">
+                            <div class="label">Funding</div>
+                            <div class="value">Ministry of Science and Higher Education, Poland (SONP/SP/549693/2022)</div>
+                        </div>
+
+                        <div class="project-description">
+                            <p>An observational cohort study assessing sports specialization, performance, injury history, and quality of life in young healthy athletes aged 8-16 from Poland. The study includes a one-year injury follow-up to create athlete risk profiles.</p>
+                        </div>
+
+                        <div class="project-objectives">
+                            <h5>Primary Research Questions</h5>
+                            <ul>
+                                <li>Do athletes with specific performance/QoL profiles suffer future injuries?</li>
+                                <li>Does high sports specialization correlate with injury risk?</li>
+                                <li>How does specialization relate to performance tests and quality of life?</li>
+                                <li>Is lower limb isometric strength associated with dynamic balance scores?</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-tags">
+                            <span class="tag">Observational</span>
+                            <span class="tag">Youth Athletes</span>
+                            <span class="tag">Injury Prevention</span>
+                            <span class="tag">Sports Specialization</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="https://clinicaltrials.gov/study/NCT06325228" target="_blank" class="btn-primary-minimal">
+                                <i class="fas fa-external-link-alt" style="margin-right: 6px;"></i>
+                                ClinicalTrials.gov
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3 class="project-title">Functional and Performance Determinants in Climbers: Examining the Role of Mobility, Stability, and Fatigue</h3>
+                        <p class="project-period">March 2025 - Ongoing</p>
+                        <div class="project-nct">NCT06830655</div>
+
+                        <div class="project-description">
+                            <p>Understanding how motor skills and fatigue affect climbing performance in indoor and outdoor climbers, comparing elite and amateur athletes across different proficiency levels.</p>
+                        </div>
+
+                        <div class="project-objectives">
+                            <h5>Study Objectives</h5>
+                            <ul>
+                                <li>Assess joint range of motion, strength, and stability differences between skill levels</li>
+                                <li>Evaluate fatigue protocol impact on performance and cognitive outcomes</li>
+                                <li>Examine joint hypermobility effects on climbing performance</li>
+                                <li>Analyze cognitive factors association with motor skills</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-tags">
+                            <span class="tag">Interventional</span>
+                            <span class="tag">Climbing</span>
+                            <span class="tag">Fatigue Analysis</span>
+                            <span class="tag">Motor Control</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="https://clinicaltrials.gov/study/NCT06830655" target="_blank" class="btn-primary-minimal">
+                                <i class="fas fa-external-link-alt" style="margin-right: 6px;"></i>
+                                View Study Details
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3 class="project-title">Exercise Program Effectiveness on Scapulohumeral Rhythm and Shoulder Girdle Stability in Young Female Handball Players</h3>
+                        <p class="project-period">March 2025 - Ongoing</p>
+                        <div class="project-nct">NCT06875596</div>
+
+                        <div class="funding-info">
+                            <div class="label">Collaborating Institution</div>
+                            <div class="value">Gdansk College of Health</div>
+                        </div>
+
+                        <div class="project-description">
+                            <p>Investigating the effectiveness of a targeted shoulder girdle exercise program in improving stability, range of motion, and motor control in young female handball players.</p>
+                        </div>
+
+                        <div class="project-tags">
+                            <span class="tag">Interventional</span>
+                            <span class="tag">Handball</span>
+                            <span class="tag">Shoulder Biomechanics</span>
+                            <span class="tag">Exercise Program</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="https://clinicaltrials.gov/study/NCT06875596" target="_blank" class="btn-primary-minimal">
+                                <i class="fas fa-external-link-alt" style="margin-right: 6px;"></i>
+                                Clinical Registry
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Completed Projects -->
+                <h2 class="section-title">Completed Projects</h2>
+
+                <div class="project-grid">
+                    <div class="project-card">
+                        <h3 class="project-title">Healthy Sport for Children and Adolescents</h3>
+                        <p class="project-period">2022 - 2024</p>
+
+                        <div class="funding-info">
+                            <div class="label">Funding Source</div>
+                            <div class="value">Ministry of Education and Science - Social Responsibility of Science Program</div>
+                        </div>
+
+                        <div class="project-description">
+                            <p>A comprehensive project focused on teaching healthy sports practices to children and youth, implemented by the Medical University of Gdansk to promote evidence-based approaches to youth athletics.</p>
+                        </div>
+
+                        <div class="project-tags">
+                            <span class="tag">Education</span>
+                            <span class="tag">Youth Health</span>
+                            <span class="tag">Policy</span>
+                            <span class="tag">Ministry Funded</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="https://informator.gumed.edu.pl/260c198" target="_blank" class="btn-secondary-minimal">
+                                <i class="fas fa-info-circle" style="margin-right: 6px;"></i>
+                                Project Information
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Open Source Tools -->
+                <div class="open-source-section">
+                    <h3>Open Source Development</h3>
+                    
+                    <div class="project-card">
+                        <h3 class="project-title">Movement Assessment Tools</h3>
+                        <div class="project-description">
+                            <p>Development and validation of accessible software tools for clinical movement assessment in physiotherapy practice. These tools provide practitioners with evidence-based screening methods that can be easily implemented in clinical settings.</p>
+                        </div>
+                        
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Biomechanics</span>
+                            <span class="tag">Clinical Tools</span>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="https://github.com/bartwilczynski" target="_blank" class="btn-primary-minimal">
+                                <i class="fab fa-github" style="margin-right: 6px;"></i>
+                                GitHub Repository
+                            </a>
+                            <a href="#" class="btn-secondary-minimal">
+                                <i class="fas fa-book" style="margin-right: 6px;"></i>
+                                Documentation
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="https://x.com/BartoszWilczys4" target="_blank" title="Twitter">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/bartwilczynski" target="_blank" title="LinkedIn">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/bartwilczynski" target="_blank" title="GitHub">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://scholar.google.com/citations?user=QzmqXZoAAAAJ" target="_blank" title="Google Scholar">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fas fa-graduation-cap fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://orcid.org/0000-0002-8663-3698" target="_blank" title="ORCID">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-orcid fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">
+                        Content copyright &copy; Bart Wilczynski 2025
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
