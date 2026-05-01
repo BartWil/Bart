@@ -21,82 +21,100 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
 
     <style>
+        body {
+            background: #fbfbfa;
+        }
+
         .year-section {
-            margin-bottom: 40px;
+            margin-bottom: 52px;
         }
 
         .year-heading {
-            font-size: 1.8em;
-            font-weight: 700;
-            color: #333;
-            border-bottom: 2px solid #0085a1;
-            padding-bottom: 8px;
-            margin-bottom: 25px;
-            margin-top: 30px;
+            font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 1.05em;
+            font-weight: 600;
+            color: #1f2933;
+            border-bottom: 1px solid #d8ddd9;
+            padding-bottom: 10px;
+            margin-bottom: 0;
+            margin-top: 36px;
+            letter-spacing: 0.04em;
         }
 
         .publication {
-            margin-bottom: 25px;
-            padding: 20px;
-            background: #fafafa;
-            border-left: 4px solid #0085a1;
-            transition: all 0.3s ease;
+            margin: 0;
+            padding: 20px 0 22px;
+            background: transparent;
+            border-bottom: 1px solid #ececea;
+            transition: border-color 0.2s ease;
         }
 
         .publication:hover {
-            background: #f5f5f5;
-            transform: translateX(5px);
+            border-bottom-color: #c8d1cc;
         }
 
         .publication-title {
+            font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             font-weight: 600;
-            font-size: 1.1em;
-            line-height: 1.4;
-            margin-bottom: 8px;
-            color: #2c3e50;
+            font-size: 1em;
+            line-height: 1.5;
+            margin-bottom: 7px;
+            color: #172026;
         }
 
         .publication-authors {
-            font-style: italic;
-            margin-bottom: 6px;
-            color: #555;
-            font-size: 0.95em;
+            font-style: normal;
+            margin-bottom: 5px;
+            color: #56616a;
+            font-size: 0.92em;
+            line-height: 1.45;
         }
 
         .publication-journal {
-            margin-bottom: 10px;
-            color: #666;
-            font-size: 0.9em;
+            margin-bottom: 0;
+            color: #79816f;
+            font-size: 0.86em;
+            line-height: 1.45;
         }
 
         .publication-links a {
             display: inline-block;
-            margin-right: 12px;
-            font-size: 0.85em;
-            color: #0085a1;
+            margin-top: 10px;
+            margin-right: 10px;
+            font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 0.72em;
+            color: #3f5f63;
             text-decoration: none;
-            font-weight: 500;
-            padding: 4px 8px;
-            border: 1px solid #0085a1;
-            border-radius: 3px;
-            transition: all 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 4px 9px;
+            border: 1px solid #cfd8d3;
+            border-radius: 999px;
+            transition: all 0.2s ease;
         }
 
         .publication-links a:hover {
-            background: #0085a1;
-            color: white;
+            background: #edf2ef;
+            border-color: #9eb0a7;
+            color: #1f2933;
         }
 
         .research-profiles {
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 5px;
-            margin-top: 30px;
+            background: transparent;
+            padding: 28px 0 0;
+            border-top: 1px solid #d8ddd9;
+            border-radius: 0;
+            margin-top: 44px;
         }
 
         .research-profiles h3 {
-            color: #2c3e50;
-            margin-bottom: 15px;
+            font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: #1f2933;
+            margin-bottom: 12px;
+            font-size: 1em;
+            font-weight: 600;
+            letter-spacing: 0.04em;
         }
 
         .research-profiles ul {
@@ -105,11 +123,11 @@
         }
 
         .research-profiles li {
-            margin-bottom: 8px;
+            margin-bottom: 9px;
         }
 
         .research-profiles a {
-            color: #0085a1;
+            color: #3f5f63;
             text-decoration: none;
             font-weight: 500;
         }
@@ -119,22 +137,44 @@
         }
 
         .stats-summary {
-            background: linear-gradient(135deg, #0085a1, #00a8cc);
-            color: white;
-            padding: 20px;
-            border-radius: 5px;
-            margin-bottom: 30px;
-            text-align: center;
+            background: transparent;
+            color: #56616a;
+            padding: 0 0 28px;
+            border-bottom: 1px solid #d8ddd9;
+            border-radius: 0;
+            margin-bottom: 34px;
+            text-align: left;
         }
 
         .stats-summary h4 {
-            margin: 0 0 10px 0;
-            font-weight: 300;
+            font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0 0 8px 0;
+            color: #172026;
+            font-size: 1.15em;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .stats-summary p {
+            max-width: 620px;
+            margin: 0;
+            color: #6d766f;
+            line-height: 1.6;
         }
 
         .highlight-author {
             font-weight: 600;
-            color: #0085a1;
+            color: #2f4f4f;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .publication {
+                padding: 18px 0 20px;
+            }
+
+            .year-section {
+                margin-bottom: 42px;
+            }
         }
     </style>
 </head>
